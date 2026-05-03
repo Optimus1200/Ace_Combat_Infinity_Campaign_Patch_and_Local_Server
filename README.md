@@ -11,3 +11,6 @@
 7. Click `Apply` and `Save custom configuration`.
 8. Extract the server .zip file you downloaded and run `LocalServer.exe`
 9. Launch the game and keep pressing the X button past the title screen. The screen will go black for a second and then load to the main menu.
+
+# Notes
+This server only listens and sends OK responses. It does not save game data nor send game data. It is not possible to save data with this server as it is.
