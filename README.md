@@ -1,4 +1,5 @@
 # Requirements
+- RPCS3 emulator
 - A legitimate copy of Ace Combat: Infinity v2.11
 - .NET 8.0 installed on your computer
 
@@ -7,7 +8,7 @@
 2. Place `imported_patch.yml` in your RPCS3/patches folder.
 3. If you haven't, create an RPCN account and sign in to RPCN.
 4. Open RPCS3 and go to Manager -> Game Patches -> ACE COMBAT INFINITY and enable the patch.
-5. Create a custom configuration for the game.
+5. In you RPCS3 game library, right-click the game and select `Create custom configuration`
 6. Go to Settings -> Network -> paste `dev-wind.siliconstudio.co.jp=127.0.0.1` in IP/Hosts switches.
 7. Make sure Network Status is set to `Connected` and PSN Status is `RPCN`.
 8. Click `Apply` and `Save custom configuration`.
