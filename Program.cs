@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace LocalServer
 {
@@ -29,7 +28,7 @@ namespace LocalServer
             // SETTINGS
 
             const string IP_ADDRESS = "127.0.0.1";
-            int[]        HTTP_PORTS = { 80, 443 };
+            int[] HTTP_PORTS = { 80, 443 };
 
             // PROGRAM START
 
@@ -56,6 +55,9 @@ namespace LocalServer
             Log("All listeners started.\n");
 
             await Task.WhenAll(tasks);
+
+            Console.WriteLine("Server offline. Press any key to exit...");
+            Console.ReadKey();
         }
 
         static async Task StartListenerAsync(AsyncListener asyncListener)
@@ -76,39 +78,54 @@ namespace LocalServer
         {
             // read message
 
-            using var stream = client.GetStream();
+            using (client)
+            using (var stream = client.GetStream())
+            {
+                var buffer = new byte[4096];
 
-            var buffer = new byte[4096];
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                if (bytesRead == 0) return;
 
-            int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
-            string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                string messageHeader = message.Substring(0, message.IndexOf('{') - 1);
 
-            Log($"[{listener.IpAddress}:{listener.Port}] Received:\n\n" + message + "\n");
+                string jsonData = message.Substring(
+                    message.IndexOf('{'),
+                    message.LastIndexOf('}') + 1 - message.IndexOf('{')
+                );
 
+                string formattedJsonData = JToken.Parse(jsonData).ToString(Newtonsoft.Json.Formatting.Indented);
 
-            // respond to message
+                Log($"[{listener.IpAddress}:{listener.Port}] Received:\n\n" + messageHeader + "\n" + formattedJsonData + "\n");
 
-            string jsonResponse = "{\"status\": 0, \"data\": {}}";
+                // respond to message
+                string jsonResponse = "{\"status\": 0, \"data\": {\"aircraft\": []}}";
 
-            byte[] bodyBytes = Encoding.UTF8.GetBytes(jsonResponse);
+                // If the response contains an empty aircraft array, populate it using Newtonsoft.Json
+                if (jsonResponse.Contains("\"aircraft\": []"))
+                {
+                    var jObject = JObject.Parse(jsonResponse);
+                    jObject["data"]!["aircraft"] = new JArray("b01b", "adfx");
+                    jsonResponse = jObject.ToString(Newtonsoft.Json.Formatting.None);
+                }
 
-            string responseHeader =
-                "HTTP/1.1 200 OK\r\n" +
-                "Content-Type: application/json;charset=utf-8\r\n" +
-                $"Content-Length: {bodyBytes.Length}\r\n" +
-                "Connection: close\r\n" +
-                "\r\n"; // end of headers
+                byte[] bodyBytes = Encoding.UTF8.GetBytes(jsonResponse);
 
-            byte[] headerBytes = Encoding.UTF8.GetBytes(responseHeader);
+                string responseHeader =
+                    "HTTP/1.1 200 OK\r\n" +
+                    "Content-Type: application/json;charset=utf-8\r\n" +
+                    $"Content-Length: {bodyBytes.Length}\r\n" +
+                    "Connection: close\r\n" +
+                    "\r\n"; // end of headers
 
-            await stream.WriteAsync(headerBytes, 0, headerBytes.Length);
-            
-            await stream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+                byte[] headerBytes = Encoding.UTF8.GetBytes(responseHeader);
 
-            await stream.FlushAsync();
-            
-            client.Close(); // close the connection so the PS3 doesn't wait indefinitely
+                await stream.WriteAsync(headerBytes, 0, headerBytes.Length);
+                await stream.WriteAsync(bodyBytes, 0, bodyBytes.Length);
+
+                await stream.FlushAsync();
+            }
         }
 
         static void Log(string data)
