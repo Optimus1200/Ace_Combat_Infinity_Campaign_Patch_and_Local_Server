@@ -14,7 +14,7 @@
 8. Click `Apply` and `Save custom configuration`.
 9. Extract the server .zip file you downloaded.
 10.
-    (Windows) Run `LocalServer.exe`
+    (Windows) Run `LocalServer.exe` as admin. 
     (Linux) Run `sudo ./LocalServer`
 12. Launch the game and keep pressing the X button past the title screen. The screen will go black for a second and then load to the main menu.
 
