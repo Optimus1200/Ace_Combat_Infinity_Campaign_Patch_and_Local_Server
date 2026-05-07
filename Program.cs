@@ -124,7 +124,7 @@ namespace LocalServer
 
         static async Task HandleHttpGetRequest(HttpContext context)
         {
-            Console.WriteLine(
+            Log(
                 "##########################################################\n" + 
                 "# HTTP GET REQUEST CALLED - PLEASE REPORT TO OPTIMUS1200 #\n" +
                 "##########################################################\n"
