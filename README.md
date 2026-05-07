@@ -1,5 +1,5 @@
 # Requirements
-- [ASP.NET Core Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [ASP.NET Core Runtime 8.0 Hosting Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [RPCS3](https://rpcs3.net/)
 - [PS3 Firmware](https://www.playstation.com/en-us/support/hardware/ps3/system-software/)
 - A legitimate copy of Ace Combat: Infinity v2.11 along with its license file
