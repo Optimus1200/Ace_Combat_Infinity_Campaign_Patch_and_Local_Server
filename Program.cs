@@ -45,7 +45,7 @@ namespace LocalServer
                 await next();
             });
 
-            // Method-specific catch-all routes.
+            // method-specific catch-all routes.
             // GET  -> aircraft data payload
             // POST -> aircraft data payload (same envelope; PS3 client expects
             //         "data" field and crashes with a null deref otherwise)
@@ -57,7 +57,7 @@ namespace LocalServer
                 Log($"[HTTP {IP_ADDRESS}:{port}] Started listening.");
             }
 
-            Log("All listeners started.\n");
+            Log("All listeners started. Server online.\n");
 
             try
             {
@@ -67,9 +67,8 @@ namespace LocalServer
             {
                 Log(e.Message);
             }
-            
 
-            Console.Write("Server offline. Press any key to exit...");
+            Console.Write("All listeners stopped. Server offline. Press any key to exit...");
             Console.ReadKey();
         }
 
