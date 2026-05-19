@@ -23,3 +23,19 @@
 
 # Notes
 - This server only listens and sends OK responses. It does not save game data nor send game data. It is not possible to save data with this server as it is.
+
+# Legal Disclaimer
+
+**OPERATION ETERNAL LIBERATION** is an independent, community-driven revival project and is **not** affiliated with, endorsed by, or otherwise connected to Bandai Namco Entertainment Inc. or any of the original rights holders of *Ace Combat Infinity*.
+
+This project is developed strictly for **non-commercial, hobby, and preservation purposes**. It is, and will always remain, **freely available** via its official GitHub repository. Any distribution of this content in exchange for payment or other compensation is entirely unauthorized and is not endorsed by the -OPERATIONS- team. If you encounter such activity, we strongly encourage you to report it.
+
+***
+
+## Intellectual Property Notices
+
+- **Ace Combat™** and **Ace Combat Infinity™** are intellectual properties of **Bandai Namco Entertainment Inc.** All rights reserved.
+- All trademarks, copyrights, aircraft designations, manufacturer names, trade names, brand names, and visual imagery depicted in the original game remain the exclusive property of their respective owners and Bandai Namco Entertainment Inc.
+- **PlayStation®** is a registered trademark of **Sony Interactive Entertainment Inc.**
+
+> This project makes no claim of ownership over any of the above intellectual properties. All original assets, names, and likenesses are used solely for interoperability and non-commercial fan preservation purposes.
