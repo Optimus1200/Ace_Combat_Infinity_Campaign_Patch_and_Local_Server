@@ -640,7 +640,7 @@ namespace AeroServer
             var response =
             """
             {
-                "result": "OK",
+                "result": "OK"
             }
             """;
 
