@@ -1,31 +1,34 @@
 # Requirements
 - [ASP.NET Core Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (Hosting Bundle recommended for Windows)
-- [RPCS3](https://rpcs3.net/)
 - [PS3 Firmware](https://www.playstation.com/en-us/support/hardware/ps3/system-software/)
-- [Ace Combat Infinity Patch](https://wiki.rpcs3.net/index.php?title=Ace_Combat_Infinity&oldid=58822)
-- A legitimate copy of Ace Combat: Infinity v2.11 along with its license file
+- A legitimate copy of Ace Combat: Infinity v2.11 and your .RAP license file.
 
-# Getting Started
-0. Set up RPCS3: https://rpcs3.net/quickstart
-1. In Releases, download the LocalServer_*.zip file for your OS.
-2. Place `imported_patch.yml` in your RPCS3/patches folder.
-3. If you haven't, create an RPCN account and sign in to RPCN.
-4. Open RPCS3 and go to Manager -> Game Patches -> ACE COMBAT INFINITY and enable the patch.
-5. In your RPCS3 game library, right-click the game and select `Create custom configuration`
-6. Go to Settings -> Network -> paste `dev-wind.siliconstudio.co.jp=127.0.0.1` in IP/Hosts switches.
-7. Make sure Network Status is set to `Connected` and PSN Status is `RPCN`.
-8. Click `Apply` and `Save custom configuration`.
-9. Extract the server .zip file you downloaded.
-10.
-    (Windows) Run `LocalServer.exe`. 
-    (Linux) Run `sudo ./LocalServer`
-12. Launch the game and keep pressing the `X` button past the title screen. The screen will go black for a second and then load to the main menu.
+# Setup
+1. In Releases, download `AeroServer-X.X-(OS).zip` and `RPCS3-Title-Small-Storage-support-7e250c5-2.zip`.
 
-# Notes
-- This server only listens and sends OK responses. It does not save game data nor send game data. It is not possible to save data with this server as it is.
+2. Extract the .zip files.
+NOTE: The game patch and custom configuration have already been applied in the RPCS3 build in advance. It is not recommended to change your custom game configuration's network settings unless necessary.
+
+3. Open the `RPCS3-Title-Small-Storage-support-7e250c5-2` folder and launch `rpcs3.exe`.
+
+4. Install PS3 Firmware: Select `File` -> `Install Firmware` -> select your `PS3UPDAT.PUP` file.
+
+5. Install Game: Select `File` -> `Add Games` -> select your game folder.
+
+6. Install License: Select `File` -> `Install Packages/Raps/Edats` -> select your .RAP file.
+
+7. Click the icon labelled `RPCN` and sign in to RPCN.
+
+8. (Windows) Open the `AeroServer-X.X-(OS)` folder and launch `AeroServer-X.X-(OS).exe`.  
+(Linux) Navigate to `AeroServer-X.X-(OS)` and run `sudo ./AeroServer-X.X-(OS)`.
+
+9. Upon launching the server for the first time, if you see alternating yellow and green lines, then that is a good sign. The server is successfully downloading the missing files it needs to feed the game.
+
+10. Launch the game and reclaim the skies.
 
 # Credits
-Many thanks to Killer0byte and JumpSuit for contributing to this project's development.
+
+Many thanks to Killer0byte for providing the custom RPCS3 build and JumpSuit for contributing to the development of the server.
 
 # Legal Disclaimer
 
