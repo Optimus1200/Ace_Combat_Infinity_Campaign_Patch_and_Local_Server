@@ -24,6 +24,9 @@
 # Notes
 - This server only listens and sends OK responses. It does not save game data nor send game data. It is not possible to save data with this server as it is.
 
+# Credits
+Many thanks to Killer0byte and JumpSuit for contributing to this project's development.
+
 # Legal Disclaimer
 
 This project is an independent, community-driven revival project and is **not** affiliated with, endorsed by, or otherwise connected to Bandai Namco Entertainment Inc. or any of the original rights holders of *Ace Combat Infinity*.
