@@ -1,3 +1,10 @@
+# About
+
+This is a mock server that aims to replicate the functionality of the Wind API to make the game work. Included in the Release is a custom build of RPCS3 by Killer0byte that allows the game to properly read .tss files.
+
+# Supported Platforms
+- Windows
+
 # Requirements
 - [ASP.NET Core Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (Hosting Bundle recommended for Windows)
 - [PS3 Firmware](https://www.playstation.com/en-us/support/hardware/ps3/system-software/)
@@ -25,6 +32,20 @@ NOTE: The game patch and custom configuration have already been applied in the R
 9. Upon launching the server for the first time, if you see alternating yellow and green lines, then that is a good sign. The server is successfully downloading the missing files it needs to feed the game.
 
 10. Launch the game and reclaim the skies.
+
+# Build
+
+## Windows
+```
+dotnet build
+dotnet run
+```
+
+## Linux
+```
+dotnet build
+sudo dotnet run
+```
 
 # Credits
 
